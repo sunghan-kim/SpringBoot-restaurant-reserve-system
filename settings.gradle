@@ -1,0 +1,3 @@
+rootProject.name = 'restaurant-reserve-system'
+
+include 'restaurant-reserve-system-api'
