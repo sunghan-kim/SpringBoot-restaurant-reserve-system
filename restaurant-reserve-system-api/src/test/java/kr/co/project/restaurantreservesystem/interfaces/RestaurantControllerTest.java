@@ -22,7 +22,6 @@ public class RestaurantControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    // Test를 할 때 Controller에 원하는 객체를 주입해줄 수 있다. (SpringBoot Annotation)
     @SpyBean(RestaurantRepositoryImpl.class)
     private RestaurantRepository restaurantRepository;
 
@@ -43,7 +42,10 @@ public class RestaurantControllerTest {
                 .andExpect(content().string(
                         containsString("\"id\":1004")))
                 .andExpect(content().string(
-                        containsString("\"name\":\"Bob zip\"")));
+                        containsString("\"name\":\"Bob zip\"")))
+                .andExpect(content().string(
+                        containsString("Kimchi")
+                )); // Bob zip에는 Kimchi라는 Menu가 있을 것이다.
 
         mvc.perform(get("/restaurants/2020"))
                 .andExpect(status().isOk())
