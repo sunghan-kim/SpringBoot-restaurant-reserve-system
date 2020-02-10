@@ -1,5 +1,6 @@
 package kr.co.project.restaurantreservesystem.interfaces;
 
+import kr.co.project.restaurantreservesystem.application.RestaurantService;
 import kr.co.project.restaurantreservesystem.domain.MenuItemRepository;
 import kr.co.project.restaurantreservesystem.domain.MenuItemRepositoryImpl;
 import kr.co.project.restaurantreservesystem.domain.RestaurantRepository;
@@ -23,6 +24,9 @@ public class RestaurantControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @SpyBean(RestaurantService.class)
+    private RestaurantService restaurantService;
 
     @SpyBean(RestaurantRepositoryImpl.class)
     private RestaurantRepository restaurantRepository;
