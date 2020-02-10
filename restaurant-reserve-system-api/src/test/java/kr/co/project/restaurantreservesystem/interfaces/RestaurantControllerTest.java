@@ -1,5 +1,7 @@
 package kr.co.project.restaurantreservesystem.interfaces;
 
+import kr.co.project.restaurantreservesystem.domain.MenuItemRepository;
+import kr.co.project.restaurantreservesystem.domain.MenuItemRepositoryImpl;
 import kr.co.project.restaurantreservesystem.domain.RestaurantRepository;
 import kr.co.project.restaurantreservesystem.domain.RestaurantRepositoryImpl;
 import org.junit.Test;
@@ -24,6 +26,9 @@ public class RestaurantControllerTest {
 
     @SpyBean(RestaurantRepositoryImpl.class)
     private RestaurantRepository restaurantRepository;
+
+    @SpyBean(MenuItemRepositoryImpl.class)
+    private MenuItemRepository menuItemRepository;
 
     @Test
     public void list() throws Exception {
