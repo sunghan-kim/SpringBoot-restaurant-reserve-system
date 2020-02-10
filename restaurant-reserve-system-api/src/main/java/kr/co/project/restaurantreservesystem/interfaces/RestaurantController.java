@@ -2,22 +2,20 @@ package kr.co.project.restaurantreservesystem.interfaces;
 
 import kr.co.project.restaurantreservesystem.domain.Restaurant;
 import kr.co.project.restaurantreservesystem.domain.RestaurantRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/*
-    UI Layer는 사용자와 도메인(또는 비즈니스 로직)들이 서로 상관없도록(징검다리 역할만 하도록) 코드를 구현한다.
-    실제로 활용하는 부분은 도메인에서 이루어지도록 한다.
-    즉, Controller는 매우 단순하게 구현하고, 데이터를 가지고 처리하는 부분은 도메인에서 이뤄지도록 한다.
- */
-
-@RestController
+@RestController // @RestController 또한 @Component의 일종이다.
 public class RestaurantController {
 
-    private RestaurantRepository repository = new RestaurantRepository();
+    // RestaurantRepository에 @Component가 지정되어 있기 때문에 별도의 객체 생성 없이 @Autowired 를 사용하여 이를 대신할 수 있다.
+    // @Autowired를 지정하면 Controller를 만들어 줄 때 Spring이 알아서 RestaurantRepository를 생성하여 넣어준다.
+    @Autowired
+    private RestaurantRepository repository;
 
     @GetMapping("/restaurants")
     public List<Restaurant> list() {

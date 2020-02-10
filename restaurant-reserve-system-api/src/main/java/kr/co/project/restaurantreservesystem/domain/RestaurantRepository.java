@@ -1,8 +1,11 @@
 package kr.co.project.restaurantreservesystem.domain;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component // RestaurantRepository 을 Spring에서 직접 관리하게 된다.
 public class RestaurantRepository {
 
     private List<Restaurant> restaurants = new ArrayList<>();
