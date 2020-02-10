@@ -1,6 +1,7 @@
 package kr.co.project.restaurantreservesystem.interfaces;
 
 import kr.co.project.restaurantreservesystem.domain.RestaurantRepository;
+import kr.co.project.restaurantreservesystem.domain.RestaurantRepositoryImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class RestaurantControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @SpyBean // Test를 할 때 Controller에 원하는 객체를 주입해줄 수 있다. (SpringBoot Annotation)
+    // Test를 할 때 Controller에 원하는 객체를 주입해줄 수 있다. (SpringBoot Annotation)
+    @SpyBean(RestaurantRepositoryImpl.class)
     private RestaurantRepository restaurantRepository;
 
     @Test
