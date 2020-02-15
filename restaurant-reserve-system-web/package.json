@@ -1,0 +1,17 @@
+{
+  "name": "restaurant-reserve-system-web",
+  "version": "1.0.0",
+  "description": "Restaurant Reserve System Web Project",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --port 3000",
+    "test": "jest"
+  },
+  "author": "zgotter",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
