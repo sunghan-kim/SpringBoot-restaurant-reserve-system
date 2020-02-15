@@ -1,6 +1,7 @@
 package kr.co.project.restaurantreservesystem.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Restaurant {
 
     @Id
@@ -25,9 +27,6 @@ public class Restaurant {
 
     @Transient
     private List<MenuItem> menuItems = new ArrayList<MenuItem>();
-
-    public Restaurant() {
-    }
 
     public Restaurant(String name, String address) {
         this.name = name;
