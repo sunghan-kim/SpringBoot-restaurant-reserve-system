@@ -19,7 +19,10 @@ class RestaurantTests {
     @Test
     public void information() {
         Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
-        assertThat(restaurant.getInformation(), is("Bob zip in Seoul"));
+
+        restaurant.setName("Sool zip");
+
+        assertThat(restaurant.getInformation(), is("Sool zip in Seoul"));
     }
 
 }
