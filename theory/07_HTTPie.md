@@ -31,4 +31,50 @@
   http GET https://www.naver.com
   ```
 
-  
+
+<br>
+
+## 7.4 HTTPie 주요 명령어
+
+### 7.4.1 레스토랑 목록 조회
+
+```
+http GET localhost:8080/restaurants
+```
+
+<br>
+
+### 7.4.2 레스토랑 상세 조회
+
+```
+http GET localhost:8080/restaurants/1
+```
+
+<br>
+
+### 7.4.3 레스토랑 등록
+
+```
+http POST localhost:8080/restaurants name="Bob zip" address="Seoul"
+```
+
+<br>
+
+### 7.4.4 레스토랑 수정
+
+```
+http PATCH localhost:8080/restaurants/1 name="Sool zip" address="Busan"
+```
+
+<br>
+
+### 7.4.5 메뉴 추가, 수정, 삭제
+
+```
+http PATCH localhost:8080/restaurants/1/menuitems < menuitems.json
+```
+
+- json 파일 형태로 되어 있는 메뉴 추가
+
+<br>
+
