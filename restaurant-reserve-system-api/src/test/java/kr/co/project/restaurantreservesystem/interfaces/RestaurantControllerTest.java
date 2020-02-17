@@ -4,6 +4,7 @@ import kr.co.project.restaurantreservesystem.application.RestaurantService;
 import kr.co.project.restaurantreservesystem.domain.MenuItem;
 import kr.co.project.restaurantreservesystem.domain.Restaurant;
 import kr.co.project.restaurantreservesystem.domain.RestaurantNotFoundException;
+import kr.co.project.restaurantreservesystem.domain.Review;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class RestaurantControllerTest {
     @Test
     public void detailWithExisted() throws Exception {
 
-        Restaurant restaurant1 = Restaurant.builder()
+        Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
                 .name("JOKER House")
                 .address("Seoul")
@@ -66,17 +67,18 @@ public class RestaurantControllerTest {
                 .name("Kimchi")
                 .build();
 
-        restaurant1.setMenuItems(Arrays.asList(menuItem));
+        restaurant.setMenuItems(Arrays.asList(menuItem));
 
-        Restaurant restaurant2 = Restaurant.builder()
-                .id(2020L)
-                .name("Cyber Food")
-                .address("Seoul")
+        // Review
+        Review review = Review.builder()
+                .name("JOKER")
+                .score(5)
+                .description("Great!")
                 .build();
 
+        restaurant.setReviews(Arrays.asList(review));
 
-        given(restaurantService.getRestaurant(1004L)).willReturn(restaurant1);
-        given(restaurantService.getRestaurant(2020L)).willReturn(restaurant2);
+        given(restaurantService.getRestaurant(1004L)).willReturn(restaurant);
 
         mvc.perform(get("/restaurants/1004"))
                 .andExpect(status().isOk())
@@ -86,14 +88,10 @@ public class RestaurantControllerTest {
                         containsString("\"name\":\"JOKER House\"")))
                 .andExpect(content().string(
                         containsString("Kimchi")
-                )); // Bob zip에는 Kimchi라는 Menu가 있을 것이다.
-
-        mvc.perform(get("/restaurants/2020"))
-                .andExpect(status().isOk())
+                ))
                 .andExpect(content().string(
-                        containsString("\"id\":2020")))
-                .andExpect(content().string(
-                        containsString("\"name\":\"Cyber Food\"")));
+                        containsString("Great!")
+                ));
     }
 
     @Test
