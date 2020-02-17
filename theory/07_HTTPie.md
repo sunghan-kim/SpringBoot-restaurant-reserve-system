@@ -47,7 +47,7 @@ http GET localhost:8080/restaurants
 ### 7.4.2 레스토랑 상세 조회
 
 ```
-http GET localhost:8080/restaurants/1
+http GET localhost:8080/restaurants/{id}
 ```
 
 <br>
@@ -63,7 +63,7 @@ http POST localhost:8080/restaurants name="Bob zip" address="Seoul"
 ### 7.4.4 레스토랑 수정
 
 ```
-http PATCH localhost:8080/restaurants/1 name="Sool zip" address="Busan"
+http PATCH localhost:8080/restaurants/{id} name="Sool zip" address="Busan"
 ```
 
 <br>
@@ -71,10 +71,20 @@ http PATCH localhost:8080/restaurants/1 name="Sool zip" address="Busan"
 ### 7.4.5 메뉴 추가, 수정, 삭제
 
 ```
-http PATCH localhost:8080/restaurants/1/menuitems < menuitems.json
+http PATCH localhost:8080/restaurants/{id}/menuitems < menuitems.json
 ```
 
 - json 파일 형태로 되어 있는 메뉴 추가
+- json 파일 안의 내용에 따라 메뉴 추가, 수정, 삭제가 이루어 진다.
+  - 메뉴 추가 : id를 지정하지 않을 경우
+  - 메뉴 수정 : id를 지정할 경우
+  - 메뉴 삭제 : destroy가 true로 되어 있을 경우
 
 <br>
+
+### 7.3.6 리뷰 추가
+
+```
+http POST localhost:8080/{id}/reviews name="Otter" score="3" description="mat-it-da"
+```
 
