@@ -1,10 +1,8 @@
 package kr.co.project.restaurantreservesystem.interfaces;
 
 import kr.co.project.restaurantreservesystem.application.RestaurantService;
-import kr.co.project.restaurantreservesystem.domain.MenuItem;
 import kr.co.project.restaurantreservesystem.domain.Restaurant;
 import kr.co.project.restaurantreservesystem.domain.RestaurantNotFoundException;
-import kr.co.project.restaurantreservesystem.domain.Review;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
@@ -41,6 +38,7 @@ public class RestaurantControllerTest {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         restaurants.add(Restaurant.builder()
                 .id(1004L)
+                .categoryId(1L)
                 .name("JOKER House")
                 .address("Seoul")
                 .build());
@@ -59,6 +57,7 @@ public class RestaurantControllerTest {
 
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
+                .categoryId(1L)
                 .name("JOKER House")
                 .address("Seoul")
                 .build();
@@ -89,6 +88,7 @@ public class RestaurantControllerTest {
             Restaurant restaurant = invocation.getArgument(0);
             return Restaurant.builder()
                     .id(1234L)
+                    .categoryId(1L)
                     .name("BeRyong")
                     .address("Busan")
                     .build();
@@ -96,7 +96,7 @@ public class RestaurantControllerTest {
 
         mvc.perform(post("/restaurants")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\": \"BeRyong\", \"address\": \"Busan\"}"))
+                .content("{\"categoryId\": 1, \"name\": \"BeRyong\", \"address\": \"Busan\"}"))
                 .andExpect(status().isCreated()) // 201
                 .andExpect(header().string("location", "/restaurants/1234"))
                 .andExpect(content().string("{}"));
@@ -109,7 +109,7 @@ public class RestaurantControllerTest {
 
         mvc.perform(post("/restaurants")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\": \"\", \"address\": \"\"}"))
+                .content("{\"categoryId\": 1, \"name\": \"\", \"address\": \"\"}"))
                 .andExpect(status().isBadRequest()); // 400
 
     }
@@ -118,7 +118,7 @@ public class RestaurantControllerTest {
     public void updateWithValidData() throws Exception {
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\": \"JOKER Bar\", \"address\": \"Busan\"}"))
+                .content("{\"categoryId\": 1, \"name\": \"JOKER Bar\", \"address\": \"Busan\"}"))
                 .andExpect(status().isOk());
 
         verify(restaurantService).updateRestaurant(1004L, "JOKER Bar", "Busan");
@@ -128,7 +128,7 @@ public class RestaurantControllerTest {
     public void updateWithInvalidData() throws Exception {
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\": \"\", \"address\": \"\"}"))
+                .content("{\"categoryId\": 1, \"name\": \"\", \"address\": \"\"}"))
                 .andExpect(status().isBadRequest()); // 400
     }
 
@@ -136,7 +136,7 @@ public class RestaurantControllerTest {
     public void updateWithoutName() throws Exception {
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\": \"\", \"address\": \"Busan\"}"))
+                .content("{\"categoryId\": 1, \"name\": \"\", \"address\": \"Busan\"}"))
                 .andExpect(status().isBadRequest()); // 400
     }
 }

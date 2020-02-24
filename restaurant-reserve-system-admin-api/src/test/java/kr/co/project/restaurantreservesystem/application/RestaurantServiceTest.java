@@ -1,6 +1,8 @@
 package kr.co.project.restaurantreservesystem.application;
 
-import kr.co.project.restaurantreservesystem.domain.*;
+import kr.co.project.restaurantreservesystem.domain.Restaurant;
+import kr.co.project.restaurantreservesystem.domain.RestaurantNotFoundException;
+import kr.co.project.restaurantreservesystem.domain.RestaurantRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -11,11 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 public class RestaurantServiceTest {
 
@@ -38,6 +38,7 @@ public class RestaurantServiceTest {
 
         Restaurant restaurant = Restaurant.builder()
                 .id(1004L)
+                .categoryId(1L)
                 .name("Bob zip")
                 .address("Seoul")
                 .build();
