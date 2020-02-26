@@ -11,12 +11,17 @@ public class UserTests {
     public void creation() {
         User user = User.builder()
                 .email("tester@example.com")
-                .name("테스터")
+                .name("Tester")
                 .level(100L)
                 .build();
 
-        assertThat(user.getName(), is("테스터"));
+        assertThat(user.getName(), is("Tester"));
         assertThat(user.isAdmin(), is(true));
+        assertThat(user.isActive(), is(true));
+
+        user.deactivate();
+
+        assertThat(user.isActive(), is(false));
     }
 
 }

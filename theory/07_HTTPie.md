@@ -88,4 +88,41 @@ http PATCH localhost:8080/restaurants/{id}/menuitems < menuitems.json
 http POST localhost:8080/{id}/reviews name="Otter" score="3" description="mat-it-da"
 ```
 
-  
+<br>
+
+  ### 7.3.7 사용자 목록 조회 (list)
+
+```
+http GET localhost:8080/users
+```
+
+<br>
+
+### 7.3.8 사용자 등록 (create)
+
+```
+http POST localhost:8080/users email=tester@example.com name=tester
+```
+
+- level은 1로 자동 지정됨
+
+<br>
+
+### 7.3.9 사용자 수정 (upate)
+
+```
+http PATCH localhost:8080/users/{id} email=admin@example.com name=administrator level=3
+```
+
+- 관리자 여부(`isAdmin`) 이 `true`로 바뀜
+
+<br>
+
+### 7.3.10 사용자 삭제 (delete)
+
+```
+http DELETE localhost:8080/users/{id}
+```
+
+- 해당 id의 사용자 level을 0으로 만듬
+- `isAdmin`, `isActive`가 모두 `false`로 바뀜
