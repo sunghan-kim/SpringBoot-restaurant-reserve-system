@@ -27,6 +27,7 @@ dependencies {
     implementation project(':restaurant-reserve-system-common')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // Spring Data JPA
     implementation 'com.h2database:h2' // H2 Database
 
