@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -21,6 +22,12 @@ public class UserService {
     }
 
     public User registerUser(String email, String name, String password) {
+        Optional<User> existed = userRepository.findByEmail(email);
+
+        if (existed.isPresent()) {
+            throw new EmailExistedException(email);
+        }
+
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(password);
 

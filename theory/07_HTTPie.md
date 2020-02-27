@@ -126,3 +126,12 @@ http DELETE localhost:8080/users/{id}
 
 - 해당 id의 사용자 level을 0으로 만듬
 - `isAdmin`, `isActive`가 모두 `false`로 바뀜
+
+<br>
+
+### 7.3.11 회원가입
+
+```
+http POST localhost:8080/users email=tester@example.com name=Tester password=test 
+```
+
