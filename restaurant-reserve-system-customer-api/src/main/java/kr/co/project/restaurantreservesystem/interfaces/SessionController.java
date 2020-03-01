@@ -1,6 +1,7 @@
 package kr.co.project.restaurantreservesystem.interfaces;
 
 import kr.co.project.restaurantreservesystem.application.UserService;
+import kr.co.project.restaurantreservesystem.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,11 +21,13 @@ public class SessionController {
     public ResponseEntity<SessionResponseDto> create(
             @RequestBody SessionRequestDto resource
             ) throws URISyntaxException {
-        String accessToken = "ACCESSTOKEN";
 
         String email = resource.getEmail();
         String password = resource.getPassword();
-        userService.authenticate(email, password);
+
+        User user = userService.authenticate(email, password);
+
+        String accessToken = user.getAccessToken();
 
         String url = "/session";
         return ResponseEntity.created(new URI(url))
