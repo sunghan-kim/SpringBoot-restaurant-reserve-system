@@ -135,3 +135,11 @@ http DELETE localhost:8080/users/{id}
 http POST localhost:8080/users email=tester@example.com name=Tester password=test 
 ```
 
+<br>
+
+### 7.3.12 세션 생성
+
+```
+http POST localhost:8080/session email=tester@example.com password=test
+```
+
