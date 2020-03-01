@@ -9,10 +9,13 @@ import java.security.Key;
 
 public class JwtUtil {
 
-    public String createToken(long userId, String name) {
-        String secret = "12345678901234567890123456789012";
-        Key key = Keys.hmacShaKeyFor(secret.getBytes());
+    private Key key;
 
+    public JwtUtil(String secret) {
+        this.key = Keys.hmacShaKeyFor(secret.getBytes());
+    }
+
+    public String createToken(long userId, String name) {
         String token = Jwts.builder()
                 .claim("userId", userId)
                 .claim("name", name)
