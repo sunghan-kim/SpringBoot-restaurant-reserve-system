@@ -79,3 +79,72 @@
 - 서명을 할 때 비밀키를 활용하게 된다.
 - 이 비밀키는 임의로 정해놔야 하고 이 것이 노출되면 다른 사람들이 서비스에서 만들어내고 있는 토큰을 똑같이 만들 수 있다. (즉, 위변조가 가능하다.)
 - 그렇기 때문에 비밀키는 노출되지 않도록 잘 관리해야 한다.
+
+<br>
+
+## 15.5 JWT 웹사이트
+
+- [https://jwt.io/](https://jwt.io/)
+
+<br>
+
+## 15.6 Java Token Signing/Verification Library
+
+- `maven: io.jsonwebtoken / jjwt / 0.9.0` 가 가장 많이 사용된다.
+- [jjwt repository](<https://github.com/jwtk/jjwt>)
+
+<br>
+
+## 15.7 JSON webtoken 사이트
+
+- [https://www.jsonwebtoken.io/](https://www.jsonwebtoken.io/)
+
+<br>
+
+### 15.7.1 JWTK/JJWT
+
+- Encode
+
+  ```java
+  import io.jsonwebtoken.Jwts;
+  import io.jsonwebtoken.SignatureAlgorithm;
+  import io.jsonwebtoken.impl.crypto.MacProvider;
+  
+  String s = Jwts.builder()
+  	.setSubject("1234567890")
+  	.setId("e5c62475-143e-46d9-be77-a6bb03b3b016")
+  	.setIssuedAt(Date.from(Instant.ofEpochSecond(1583063756)))
+  	.setExpiration(Date.from(Instant.ofEpochSecond(1583067356)))
+  	.claim("name", "John Doe")
+  	.claim("admin", true)
+  	.signWith(SignatureAlgorithm.HS256, "secret".getBytes("UTF-8"))
+  	.compact();
+  ```
+
+- Decode
+
+  ```java
+  import io.jsonwebtoken.Jwts;
+  import io.jsonwebtoken.SignatureAlgorithm;
+  import io.jsonwebtoken.impl.crypto.MacProvider;
+  import java.security.Key;
+  
+  try {
+  
+      Jwts.parser()
+  	.setSigningKey("secret".getBytes("UTF-8"))
+  	.parseClaimsJws("
+  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImp0aSI6ImU1YzYyNDc1LTE0M2UtNDZkOS1iZTc3LWE2YmIwM2IzYjAxNiIsImlhdCI6MTU4MzA2Mzc1NiwiZXhwIjoxNTgzMDY3MzU2fQ.vJlZEgf_La9bAp1lHiJIzmEWZyn821LykuJLD8d5zOo
+  	");
+  
+  
+      //OK, we can trust this JWT
+  
+  } catch (SignatureException e) {
+  
+      //don't trust the JWT!
+  }
+  ```
+
+  
+
