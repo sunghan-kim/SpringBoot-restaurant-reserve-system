@@ -143,3 +143,11 @@ http POST localhost:8080/users email=tester@example.com name=Tester password=tes
 http POST localhost:8080/session email=tester@example.com password=test
 ```
 
+<br>
+
+### 7.3.13 Header를 이용한 리뷰 생성
+
+```
+http POST localhost:8080/restaurants/1/reviews score=3 description="좋습니다" "Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsIm5hbWUiOiJKb2huIn0.8hm6ZOJykSINHxL-rf0yV882fApL3hyQ9-WGlJUyo2A"
+```
+
