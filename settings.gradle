@@ -3,4 +3,5 @@ rootProject.name = 'restaurant-reserve-system'
 include 'restaurant-reserve-system-common'
 include 'restaurant-reserve-system-admin-api'
 include 'restaurant-reserve-system-customer-api'
+include 'restaurant-reserve-system-login-api'
 

@@ -151,3 +151,12 @@ http POST localhost:8080/session email=tester@example.com password=test
 http POST localhost:8080/restaurants/1/reviews score=3 description="좋습니다" "Authorization:Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsIm5hbWUiOiJKb2huIn0.8hm6ZOJykSINHxL-rf0yV882fApL3hyQ9-WGlJUyo2A"
 ```
 
+<br>
+
+### 7.3.14 Login-API의 AccessToken으로 Customer-API에 리뷰 남기기
+
+```
+http POST  localhost:8080/restaurants/2/reviews score=5 description="good" "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE5MywibmFtZ
+SI6IlRlc3RlciJ9.JI98sNBIkT3eULdzM-PhaVuF_60PDfmtQsuI8cvSdEQ"
+```
+
