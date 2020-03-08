@@ -1,0 +1,4 @@
+email : tester@example.com
+password : test
+
+accessToken : eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE5MywibmFtZSI6IlRlc3RlciJ9.JI98sNBIkT3eULdzM-PhaVuF_60PDfmtQsuI8cvSdEQ
