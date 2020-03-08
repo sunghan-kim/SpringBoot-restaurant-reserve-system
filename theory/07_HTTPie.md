@@ -160,3 +160,19 @@ http POST  localhost:8080/restaurants/2/reviews score=5 description="good" "Auth
 SI6IlRlc3RlciJ9.JI98sNBIkT3eULdzM-PhaVuF_60PDfmtQsuI8cvSdEQ"
 ```
 
+<br>
+
+### 7.3.15 테이블 예약
+
+```
+http POST localhost:8080/restaurants/{id}/reservations
+```
+
+<br>
+
+### 7.3.16 테이블 예약 정보 확인
+
+```
+http GET localhost:8080/reservations
+```
+
