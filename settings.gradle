@@ -4,4 +4,5 @@ include 'restaurant-reserve-system-common'
 include 'restaurant-reserve-system-admin-api'
 include 'restaurant-reserve-system-customer-api'
 include 'restaurant-reserve-system-login-api'
+include 'restaurant-reserve-system-restaurant-api'
 

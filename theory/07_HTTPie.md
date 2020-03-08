@@ -173,6 +173,7 @@ http POST localhost:8080/restaurants/{id}/reservations date="2019-12-24" time="2
 ### 7.3.16 테이블 예약 정보 확인
 
 ```
-http GET localhost:8080/reservations
+http GET localhost:8080/reservations "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIsIm5hbWUiOiLqsIDqsozso7zsnbgiLCJyZXN0YXVyYW50SWQiOjF9.9CobbiQ-4vkZieXdiK5lvNU_TRcXJQ69E7dSWPxxVBk"
 ```
 
+- 레스토랑 주인의 accessToken 사용
