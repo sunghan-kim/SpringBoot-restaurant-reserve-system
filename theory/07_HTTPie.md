@@ -165,7 +165,7 @@ SI6IlRlc3RlciJ9.JI98sNBIkT3eULdzM-PhaVuF_60PDfmtQsuI8cvSdEQ"
 ### 7.3.15 테이블 예약
 
 ```
-http POST localhost:8080/restaurants/{id}/reservations
+http POST localhost:8080/restaurants/{id}/reservations date="2019-12-24" time="23:00" partySize=4 "Authorization: bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjE5MywibmFtZSI6IlRlc3RlciJ9.JI98sNBIkT3eULdzM-PhaVuF_60PDfmtQsuI8cvSdEQ"
 ```
 
 <br>
